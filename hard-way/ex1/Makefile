@@ -1,6 +1,6 @@
 CFLAGS=-Wall -g
 
-KEEP= ex1.c ex3.c Makefile ex6.c
+KEEP= Makefile $(wildcard *.c)
 
 clean:
 	rm -rf $(filter-out $(KEEP),$(wildcard *))
