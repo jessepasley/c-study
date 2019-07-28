@@ -2,6 +2,9 @@
 #include <stdlib.h>
 
 #include <editline/readline.h>
+#ifdef _WIN32
+#include <editline/history.h>
+#endif
 
 /* Declare a buffer for suer inputer of size 2048 */
 
@@ -21,7 +24,7 @@ int main(int argc, char** argv) {
 		add_history(input);
 
 		/* Echo input back to user */
-		printf("No, you're a %s", input);
+		printf("No, you're a %s\n", input);
 	
 		/* Free retrieved input */
 		free(input);
