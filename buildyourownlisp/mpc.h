@@ -108,4 +108,33 @@ mpc_parser_t *mpc_string(const char *s);
 ** Other Parsers
 */
 
+mpc_parser_t *mpc_pass(void);
+mpc_parser_t *mpc_fail(const char *m);
+mpc_parser_t *mpc_failf(const char *fmt, ...);
+mpc_parser_t *mpc_lift(mpc_ctor_t f);
+mpc_parser_t *mpc_lift_val(mpc_val_t *t);
+mpc_parser_t *mpc_anchor(int(*f)(char,char));
+mpc_parser_t *mpc_state(void);
+
+
+/*
+** Combinator Parsers
+*/
+
+mpc_parser_t *mpc_expect(mpc_parser_t *a, const char *e);
+mpc_parser_t *mpc_expectf(mpc_parser_t *a, const char *fmt, ...);
+mpc_parser_t *mpc_apply(mpc_parser_t *a, mpc_apply_t f);
+mpc_parser_t *mpc_apply_to(mpc_parser_t a*, mpc_apply_to_f, void *x);
+
+mpc_parser_t *mpc_not(mpc_parser *a, mpc_dtor_t da);
+mpc_parser_t *mpc_not_lift(mpc_parser_t *a, mpc_dtor_t da, mpc_ctor_t lf);
+mpc_parser_t *mpc_maybe(mpc_parser_t *a);
+mpc_parser_t *mpc_maybe_lift(mpc_parser_t *a, mpc_ctor_t lf);
+
+mpc_parser_t *mpc_many(mpc_fold_t f, mpc_parser_t *a);
+mpc_parser_t *mpc_many1(mpc_fold_t f, mpc_parser_t *a);
+mpc_parser_t *mpc_count(int n, mpc_fold_t f, mpc_parser_t *a, mpc_dtor_t da);
+
+mpc_parser_t *mpc_or(int n, ...);
+mpc_parser_t *mpc_and(int n, mpc_fold_t f, ...);
 
