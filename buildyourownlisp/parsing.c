@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "mpc.h"
 
 #include <editline/readline.h>
 #ifdef _WIN32
 #include <editline/history.h>
 #endif
 
-/* Declare a buffer for suer inputer of size 2048 */
+/* Declare a buffer for user inputer of size 2048 */
 
 int main(int argc, char** argv) {
 
